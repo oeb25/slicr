@@ -1,0 +1,28 @@
+{
+  "name": "slicr",
+  "version": "0.1.0",
+  "description": "A spritesheet utility for webgames",
+  "main": "lib/slicr.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "rm -rf lib & babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oeb25/slicr.git"
+  },
+  "keywords": [
+    "html5",
+    "canvas",
+    "games"
+  ],
+  "author": "Oliver Bøving",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oeb25/slicr/issues"
+  },
+  "homepage": "https://github.com/oeb25/slicr#readme",
+  "devDependencies": {
+    "babel": "^5.8.20"
+  }
+}
