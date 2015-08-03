@@ -13,7 +13,7 @@ export default function slicr(img, ops) {
   }
 
   let width =
-    ops.slices ? Math.floor(width / ops.slices) :
+    ops.slices ? Math.floor(img.width / ops.slices) :
     ops.width || img.width;
 
   let height = ops.height || img.height;
