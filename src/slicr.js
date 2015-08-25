@@ -1,7 +1,8 @@
-// slicr :: ((String|Image), (Object|Number)) -> Promise([Image])
+// slicr :: (Image, (Object|Number)) -> [Image]
 export default function slicr(img, ops) {
-  if (typeof img === 'string') {
-    return loadImage(img).then(img => slicr(img, ops));
+  if (typeof img == 'string') {
+    console.error('slicr is now synchronous. That means you will have to pass a image object instead of a string. For previous results use slicr.async instead.');
+    return async(img, ops);
   }
 
   if (!img.width) {
@@ -36,10 +37,15 @@ export default function slicr(img, ops) {
     return canvas
   });
 
-  return new Promise((resolve) => {
-    resolve(canvases);
-  });
+  return canvases;
 }
+
+// slicr :: (String, (Object|Number)) -> Promise([Image])
+export function async(url, ops) {
+  return loadImage(url).then(img => slicr(img, ops));
+}
+
+slicr.async = async;
 
 // loadImage :: String -> Promise(Image)
 function loadImage(url) {

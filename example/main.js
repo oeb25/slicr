@@ -1,10 +1,16 @@
 import slicr from '../src/slicr';
 
-let a = slicr('grass.png', 3);
-let b = slicr('grass.png', { width: 16 });
-let c = slicr('grass.png', { width: 16, height: 16 });
+let draw = tilesets =>
+  tilesets.map(tileset =>
+    tileset.map(tile => document.body.appendChild(tile)));
 
-Promise.all([a,b,c])
-  .then((imgs, huh) =>
-    imgs.map(img =>
-      img.map(v => document.body.appendChild(v))));
+let grass = new Image();
+grass.onload = () => {
+  draw([
+    slicr(grass, 3),
+    slicr(grass, { width: 16 }),
+    slicr(grass, { width: 16, height: 16 })
+  ]);
+};
+
+grass.src = 'grass.png';
